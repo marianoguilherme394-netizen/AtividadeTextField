@@ -1,0 +1,28 @@
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            TelaPrincipal()
+        }
+    }
+}
+
+@Composable
+fun TelaPrincipal(){
+    var vlrIni = remember { mutableStateOf("valorInicial") }
+    Column() {
+        Text("Texto")
+        Text("Texto")
+        Text("Texto")
+        TextField(value = vlrIni.value,{
+            vlrIni.value = it; //it é a coisa digitada + oq tava digitado antes
+        })
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    TelaPrincipal()
+}
